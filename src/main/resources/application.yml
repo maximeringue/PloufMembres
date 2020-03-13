@@ -6,17 +6,14 @@ serveur :
 spring :
   application :
     name : zezuperbank
-    #acces BD
-    datasource :
-      driverClassName: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3308/zezuperbank?serverTimezone=UTC
-      username: root
-      password:
-    jpa:
-      database-platform: org.hibernate.dialect.MySQL5Dialect
-      hibernate:
-        #ne pas laisser en prod#
-        ddl-auto: create-drop
-  autoconfigure:
-    exclude:
-      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+  #acces BD
+  datasource :
+    url: jdbc:mysql://localhost:3308/zezuperbank?serverTimezone=UTC
+    username: root
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    hibernate:
+      #ne pas laisser en prod#
+      ddl-auto: create-drop
+
