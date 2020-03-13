@@ -1,4 +1,4 @@
-package com.miage.td.bank.app.rest;
+package com.miage.td.bank.app.service;
 
 import com.miage.td.bank.app.entities.Compte;
 import com.miage.td.bank.app.repository.CompteRepo;
