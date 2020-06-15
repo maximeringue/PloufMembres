@@ -1,5 +1,5 @@
 #reglage serveur
-serveur :
+server :
   port: 10000
 
 #nom appli
