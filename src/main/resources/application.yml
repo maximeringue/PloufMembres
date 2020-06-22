@@ -5,10 +5,10 @@ server :
 #nom appli
 spring :
   application :
-    name : zezuperbank
+    name : ploufMembre
   #acces BD
   datasource :
-    url: jdbc:mysql://localhost:3308/zezuperbank?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3308/plouf_utilisateur?serverTimezone=UTC
     username: root
     password:
   jpa:

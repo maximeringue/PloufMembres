@@ -11,19 +11,38 @@ import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
-public class Client {
+public class Utilisateur {
     @Id
-    @Column(length = 15)
-    @Size (max=15)
-    public String id;
+    @Size (max=16)
+    public String login;
 
     @NotNull
+    @Size (max=50)
     public String nom;
+
     @NotNull
+    @Size (max=50)
     public String prenom;
 
+    @NotNull
+    @Size(max=255)
+    public String mail;
 
-    @OneToMany
-    public List<Compte> comptes;
+    @NotNull
+    public int niveau;
+
+    @NotNull
+    public int num_licence;
+
+    @NotNull
+    public int adresse_id;
+
+    @NotNull
+    public int certificat_id;
+
+    @NotNull
+    public int role_id;
+
+
 }
 
