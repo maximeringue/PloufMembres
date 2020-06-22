@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UtilisateurRepo extends CrudRepository<Utilisateur,String> {
-    Utilisateur getClientById(String id);
+    Utilisateur getClientByLogin(String login);
 }

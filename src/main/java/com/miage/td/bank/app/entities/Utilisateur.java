@@ -35,13 +35,13 @@ public class Utilisateur {
     public int num_licence;
 
     @NotNull
-    public int adresse_id;
+    public String adresse_id;
 
     @NotNull
-    public int certificat_id;
+    public String certificat_id;
 
     @NotNull
-    public int role_id;
+    public String role_id;
 
 
 }
