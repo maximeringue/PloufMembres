@@ -17,3 +17,7 @@ spring :
       #ne pas laisser en prod#
       ddl-auto: create-drop
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:30000/eureka/
