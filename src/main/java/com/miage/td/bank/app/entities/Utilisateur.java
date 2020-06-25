@@ -46,6 +46,6 @@ public class Utilisateur {
     @NotNull
     public String role_id;
 
-
+    public  boolean cotisation = false;
 }
 
