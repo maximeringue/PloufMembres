@@ -33,6 +33,7 @@ public class Utilisateur {
     @NotNull
     public int numlicence = 0;
 
+
     @NotNull
     public String adresseid;
 
