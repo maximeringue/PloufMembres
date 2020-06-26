@@ -19,8 +19,10 @@ import java.util.Date;
 @Service
 public class MetierUtilisateur {
 
-    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
     Date date = new Date();
+
+
     @Autowired
     private UtilisateurRepo clientrepo;
     @Autowired
@@ -29,7 +31,12 @@ public class MetierUtilisateur {
     public Utilisateur membreIsValide (String idMembre, int niveau){
         Utilisateur utilisateur = clientrepo.findById(idMembre).get();
         Certificat certificat = certificatRepo.findById(utilisateur.certificat_id).get();
-        if (certificat.dateFinValid.after(date))
+
+        dateFormat.format(date);
+        System.out.println(date);
+        System.out.println(certificat.dateFinValid);
+
+        if (certificat.dateFinValid.before(date))
         {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"La date du certificat n'est pas valide");
         }
