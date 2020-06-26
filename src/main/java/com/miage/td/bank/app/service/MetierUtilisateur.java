@@ -19,8 +19,8 @@ import java.util.Date;
 @Service
 public class MetierUtilisateur {
 
-    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-    Date date = new Date();
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    Date dateAjd = new Date();
     @Autowired
     private UtilisateurRepo clientrepo;
     @Autowired
@@ -29,7 +29,7 @@ public class MetierUtilisateur {
     public Utilisateur membreIsValide (String idMembre, int niveau){
         Utilisateur utilisateur = clientrepo.findById(idMembre).get();
         Certificat certificat = certificatRepo.findById(utilisateur.certificat_id).get();
-        if (certificat.dateFinValid.after(date))
+        if (certificat.dateFinValid.after(dateAjd))
         {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"La date du certificat n'est pas valide");
         }
@@ -66,6 +66,12 @@ public class MetierUtilisateur {
     public Utilisateur donnerNiveau(String idMembre, int niveau){
         Utilisateur utilisateur = clientrepo.findById(idMembre).get();
         utilisateur.niveau = niveau;
+        return utilisateur;
+    }
+
+    public Utilisateur enseigner(String idMembre){
+        Utilisateur utilisateur = clientrepo.findById(idMembre).get();
+        utilisateur.role_id = "2";
         return utilisateur;
     }
 }
