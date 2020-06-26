@@ -30,11 +30,9 @@ public class MetierUtilisateur {
 
     public Utilisateur membreIsValide (String idMembre, int niveau){
         Utilisateur utilisateur = clientrepo.findById(idMembre).get();
-        Certificat certificat = certificatRepo.findById(utilisateur.certificat_id).get();
+        Certificat certificat = certificatRepo.findById(utilisateur.certificatid).get();
 
         dateFormat.format(date);
-        System.out.println(date);
-        System.out.println(certificat.dateFinValid);
 
         if (certificat.dateFinValid.before(date))
         {
@@ -62,17 +60,23 @@ public class MetierUtilisateur {
 
     public Utilisateur certifier(String idMembre, String certificat_id){
         Utilisateur utilisateur = clientrepo.findById(idMembre).get();
-        utilisateur.certificat_id = certificat_id;
-        return utilisateur;
+        utilisateur.certificatid = certificat_id;
+        return this.clientrepo.save(utilisateur);
     }
     public Utilisateur donnerLicence(String idMembre, int numLicence){
         Utilisateur utilisateur = clientrepo.findById(idMembre).get();
-        utilisateur.num_licence = numLicence;
-        return utilisateur;
+        utilisateur.numlicence = numLicence;
+        return this.clientrepo.save(utilisateur);
     }
     public Utilisateur donnerNiveau(String idMembre, int niveau){
         Utilisateur utilisateur = clientrepo.findById(idMembre).get();
         utilisateur.niveau = niveau;
+        return this.clientrepo.save(utilisateur);
+    }
+
+    public Utilisateur enseigner(String idMembre){
+        Utilisateur utilisateur = clientrepo.findById(idMembre).get();
+        utilisateur.roleid = "2";
         return utilisateur;
     }
 }

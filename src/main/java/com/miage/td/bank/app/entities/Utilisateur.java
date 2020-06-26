@@ -1,23 +1,19 @@
 package com.miage.td.bank.app.entities;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
-import jdk.nashorn.internal.objects.annotations.Setter;
-import org.hibernate.validator.constraints.Length;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.List;
-
 
 @Entity
 public class Utilisateur {
     @Id
     @Size (max=16)
     public String login;
+
+    @NotNull
+    @Size (max=16)
+    public String mdp;
 
     @NotNull
     @Size (max=50)
@@ -32,22 +28,20 @@ public class Utilisateur {
     public String mail;
 
     @NotNull
-    public int niveau;
+    public int niveau = 0;
 
     @NotNull
-    public int num_licence;
+    public int numlicence = 0;
 
     @NotNull
-    public String adresse_id;
+    public String adresseid;
 
     @NotNull
-    public String certificat_id;
+    public String certificatid = "0";
 
     @NotNull
-    public String role_id = "1";
+    public String roleid = "1";
 
     public boolean cotisation = false;
-
-
 }
 

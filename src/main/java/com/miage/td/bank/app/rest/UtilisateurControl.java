@@ -47,4 +47,8 @@ public class UtilisateurControl {
     Utilisateur putNiveau(@PathVariable("id") String s, @RequestParam int niveau)
     {return membreValide.donnerNiveau(s,niveau);}
 
+    @PutMapping("{id}/enseigner")
+    Utilisateur putNiveau(@PathVariable("id") String s)
+    {return membreValide.enseigner(s);}
+
 }
