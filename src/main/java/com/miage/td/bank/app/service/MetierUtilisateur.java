@@ -77,7 +77,7 @@ public class MetierUtilisateur {
     public Utilisateur enseigner(String idMembre){
         Utilisateur utilisateur = clientrepo.findById(idMembre).get();
         utilisateur.roleid = "2";
-        return utilisateur;
+        return this.clientrepo.save(utilisateur);
     }
 }
 

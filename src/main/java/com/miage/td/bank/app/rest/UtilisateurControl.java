@@ -48,7 +48,7 @@ public class UtilisateurControl {
     {return membreValide.donnerNiveau(s,niveau);}
 
     @PutMapping("{id}/enseigner")
-    Utilisateur putNiveau(@PathVariable("id") String s)
+    Utilisateur putProf(@PathVariable("id") String s)
     {return membreValide.enseigner(s);}
 
 }
