@@ -47,9 +47,26 @@ public class MetierUtilisateur {
     }
 
     public Utilisateur payerCotisation(String idMembre){
+        // On considère qu'on réinitialise toutes les cotisations à chaque début d'année civile
         Utilisateur utilisateur = clientrepo.findById(idMembre).get();
         utilisateur.cotisation = true;
         return this.clientrepo.save(utilisateur);
+    }
+
+    public Utilisateur certifier(String idMembre, String certificat_id){
+        Utilisateur utilisateur = clientrepo.findById(idMembre).get();
+        utilisateur.certificat_id = certificat_id;
+        return utilisateur;
+    }
+    public Utilisateur donnerLicence(String idMembre, int numLicence){
+        Utilisateur utilisateur = clientrepo.findById(idMembre).get();
+        utilisateur.num_licence = numLicence;
+        return utilisateur;
+    }
+    public Utilisateur donnerNiveau(String idMembre, int niveau){
+        Utilisateur utilisateur = clientrepo.findById(idMembre).get();
+        utilisateur.niveau = niveau;
+        return utilisateur;
     }
 }
 
