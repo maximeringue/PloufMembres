@@ -6,37 +6,44 @@ import com.miage.td.bank.app.repository.UtilisateurRepo;
 import com.miage.td.bank.app.rest.CertificatControl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.convert.Jsr310Converters;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Calendar;
+import java.util.Date;
 
 @Service
 public class MetierUtilisateur {
 
-    DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
-    Calendar calendar = Calendar.getInstance();
-
+    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    Date date = new Date();
     @Autowired
     private UtilisateurRepo clientrepo;
     @Autowired
     private CertificatRepo certificatRepo;
 
-    public boolean membreIsValide (String idMembre, int niveau){
+    public Utilisateur membreIsValide (String idMembre, int niveau){
         Utilisateur utilisateur = clientrepo.findById(idMembre).get();
         Certificat certificat = certificatRepo.findById(utilisateur.certificat_id).get();
-        if (certificat.dateFinValid.after(calendar.getTime()))
+        if (certificat.dateFinValid.after(date))
         {
-            return  false;
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"La date du certificat n'est pas valide");
         }
         if (utilisateur.niveau != niveau)
         {
-            return false;
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Le niveau n'est pas valide");
         }
+        if (!utilisateur.cotisation)
+        {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"La cotisation n'est pas valide");
+        }
+
         // On considère qu'à la fin de chaque saison de plongée, toutes les cotisations passent à false
-        return utilisateur.cotisation;
+        return utilisateur;
     }
 
     public Utilisateur payerCotisation(String idMembre){

@@ -26,7 +26,7 @@ public class UtilisateurControl {
     }
 
     @GetMapping("{id}/verif")
-    boolean getValideMembre(@PathVariable("id") String s, @RequestParam int niveau) {return membreValide.membreIsValide(s,niveau);}
+    Utilisateur getValideMembre(@PathVariable("id") String s, @RequestParam int niveau) {return membreValide.membreIsValide(s,niveau);}
 
     @PutMapping("{id}/cotiser")
     Utilisateur putCotisation(@PathVariable("id") String s) {return membreValide.payerCotisation(s); }
