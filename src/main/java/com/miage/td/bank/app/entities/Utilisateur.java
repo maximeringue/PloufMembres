@@ -35,16 +35,16 @@ public class Utilisateur {
     public int niveau;
 
     @NotNull
-    public int num_licence;
+    public int numlicence;
 
     @NotNull
-    public String adresse_id;
+    public String adresseid;
 
     @NotNull
-    public String certificat_id;
+    public String certificatid;
 
     @NotNull
-    public String role_id;
+    public String roleid;
 
 
 }

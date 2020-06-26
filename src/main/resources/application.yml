@@ -5,7 +5,7 @@ server :
 #nom appli
 spring :
   application :
-    name : ploufMembre
+    name : PLOUFMEMBRE
   #acces BD
   datasource :
     url: jdbc:mysql://localhost:3308/plouf_utilisateur?serverTimezone=UTC
@@ -17,3 +17,7 @@ spring :
       #ne pas laisser en prod#
       ddl-auto: create-drop
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:30000/eureka/
