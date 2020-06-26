@@ -5,7 +5,7 @@ server :
 #nom appli
 spring :
   application :
-    name : ploufMembre
+    name : PLOUFMEMBRE
   #acces BD
   datasource :
     url: jdbc:mysql://localhost:3308/plouf_utilisateur?serverTimezone=UTC
