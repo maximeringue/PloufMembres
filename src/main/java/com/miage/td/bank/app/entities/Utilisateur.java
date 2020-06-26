@@ -44,7 +44,7 @@ public class Utilisateur {
     public String certificat_id;
 
     @NotNull
-    public String role_id;
+    public String role_id = "1";
 
     public boolean cotisation = false;
 
